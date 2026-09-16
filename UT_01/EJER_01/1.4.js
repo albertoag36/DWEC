@@ -6,14 +6,16 @@ console.log(ciudades)
 
 const ciudadesMayusculas = []
 
-ciudadesMayusculasconst  = ciudades.map(function(ciudad){
+ciudades.map(function(ciudad){
     return ciudadesMayusculas.push(ciudad.toUpperCase())
 })
 
 console.log(ciudadesMayusculas)
 
-// const ciudadesFiltradas = ciudades.filter(function(ciudad){
-//     return ciudadesFiltradas.push(ciudad.length > 6)
-// })
+const ciudadesFiltradas = []
 
-// console.log(ciudadesFiltradas)
+ciudades.filter(function(ciudad){
+    if (ciudad.length > 6) return ciudadesFiltradas.push(ciudad)
+})
+
+console.log(ciudadesFiltradas)

@@ -1,19 +1,22 @@
-const estudiantes = [estudiante1 = {
-    nombre: "Alberto",
-    apellidos: "Alves Garcia",
-    calificacion: 8,
-    aprobado: true
-}, estudiante2 = {
-    nombre: "Pepe",
-    apellidos: "Garcia Garcia",
-    calificacion: 0,
-    aprobado: true
-}, estudiante3 = {
-    nombre: "Manolo",
-    apellidos: "Alves Alves",
-    calificacion: 5,
-    aprobado: false
-}]
+const estudiantes = [
+    {
+        nombre: "Alberto",
+        apellidos: "Alves Garcia",
+        calificacion: 8,
+        aprobado: true
+    },
+    {
+        nombre: "Pepe",
+        apellidos: "Garcia Garcia",
+        calificacion: 0,
+        aprobado: true
+    },
+    {
+        nombre: "Manolo",
+        apellidos: "Alves Alves",
+        calificacion: 5,
+        aprobado: false
+    }]
 
 // console.log(estudiantes)
 

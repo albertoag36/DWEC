@@ -20,33 +20,30 @@ const estudiantes = [
 
 // console.log(estudiantes)
 
-estudiantesID = []
-
 let id = 1
 
-estudiantes.map(function (estudiante) {
+estudiantesID = estudiantes.map(function (estudiante) {
     estudiante.id = id++
-
-    return estudiantesID.push(estudiante)
+    return estudiante
 })
 
 console.log(estudiantesID)
 
-estudiantesFiltrados = []
-
-estudiantes.map(function (estudiante) {
-    if (estudiante.calificacion >= 5) return estudiantesFiltrados.push(estudiante)
+estudiantesFiltrados = estudiantes.filter(function (estudiante) {
+    return estudiante.calificacion >= 5
 })
 
 console.log(estudiantesFiltrados)
 
 
 estudiantesFiltrados.forEach(estudiante => {
-    console.log(`¡Felicidades ${estudiante.nombre}, has aprobado con ${estudiante.calificacion}`)
+console.log(`¡Felicidades ${estudiante.nombre}, has aprobado con ${estudiante.calificacion}`)
 });
+
+console.log()
 
 estudiantes.forEach(estudiante => {
     if (estudiante.aprobado && estudiante.calificacion >= 5) {
         return console.log(`¡Felicidades ${estudiante.nombre}, has aprobado con ${estudiante.calificacion}`)
-    } return console.log(`⚠️ Incoherencia en el registro de ${estudiante.nombre}: calificación = ${estudiante.calificacion}, aprobado: ${estudiante.aprobado}`)
+    } return console.log(`⚠️ Incoherencia en el registro de ${estudiante.nombre}: calificación = ${estudiante.calificacion}, aprobado: ${estudiante.aprobado} `)
 })

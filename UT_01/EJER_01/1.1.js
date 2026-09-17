@@ -1,6 +1,6 @@
 const nombre = "Alberto"
 let edad = 24
-const tieneMascota = true
+const tieneMascota = false
 
 edad = 18
 // tieneMascota = false
@@ -17,4 +17,4 @@ let mascota = function(){
     return "no tiene mascota"
 
 }
-console.log(`${nombre} tiene ${edad} años y ${mascota}}`)
+console.log(`${nombre} tiene ${edad} años y ${mascota()}`)

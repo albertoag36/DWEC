@@ -42,15 +42,8 @@ estudiantesFiltrados.forEach(estudiante => {
     console.log(`¡Felicidades ${estudiante.nombre}, has aprobado con ${estudiante.calificacion}`)
 });
 
-// Recorre el array original y verifica si el valor de la propiedad aprobado es
-// coherente con la calificacion (es decir, si calificacion >= 5 entonces aprobado
-// debe ser true, y si es menor, debe ser false).
-// Si hay incoherencias, imprime un mensaje como:
-// “⚠️ Incoherencia en el registro de [nombre]: calificación = [calificacion],
-// aprobado = [aprobado]”
-
 estudiantes.forEach(estudiante => {
     if (estudiante.aprobado && estudiante.calificacion >= 5) {
         return console.log(`¡Felicidades ${estudiante.nombre}, has aprobado con ${estudiante.calificacion}`)
-    } return console.log(`Incoherencia en el registro de ${estudiante.nombre}: calificación = ${estudiante.calificacion}, aprobado: ${estudiante.aprobado}`)
+    } return console.log(`⚠️ Incoherencia en el registro de ${estudiante.nombre}: calificación = ${estudiante.calificacion}, aprobado: ${estudiante.aprobado}`)
 })

@@ -27,22 +27,16 @@ estudiantes.map(function (estudiante) {
     return estudiantesID.push(estudiante)
 })
 
-// console.log(estudiantesID)
+console.log(estudiantesID)
 
 estudiantesFiltrados = []
 
 estudiantes.map(function (estudiante) {
-    if (estudiante.calificacion >= 5)  return estudiantesFiltrados.push(estudiante)
+    if (estudiante.calificacion >= 5) return estudiantesFiltrados.push(estudiante)
 })
 
 console.log(estudiantesFiltrados)
 
-// Para cada estudiante en el array filtrado (los aprobados), imprime un mensaje
-// en consola usando Template Strings que diga: “¡Felicidades [nombre], has aprobado con [calificacion]!”.
-
-estudiantes.map(function (estudiante) {
-    if (estudiante.aprobado)  return estudiantesFiltrados.push(estudiante)
-})
 
 estudiantesFiltrados.forEach(estudiante => {
     console.log(`¡Felicidades ${estudiante.nombre}, has aprobado con ${estudiante.calificacion}`)
@@ -54,3 +48,9 @@ estudiantesFiltrados.forEach(estudiante => {
 // Si hay incoherencias, imprime un mensaje como:
 // “⚠️ Incoherencia en el registro de [nombre]: calificación = [calificacion],
 // aprobado = [aprobado]”
+
+estudiantes.forEach(estudiante => {
+    if (estudiante.aprobado && estudiante.calificacion >= 5) {
+        return console.log(`¡Felicidades ${estudiante.nombre}, has aprobado con ${estudiante.calificacion}`)
+    } return console.log(`Incoherencia en el registro de ${estudiante.nombre}: calificación = ${estudiante.calificacion}, aprobado: ${estudiante.aprobado}`)
+})

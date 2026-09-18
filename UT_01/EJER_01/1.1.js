@@ -9,7 +9,6 @@ console.log(`${nombre} tipo: ${typeof(nombre)}`)
 console.log(`${edad} tipo: ${typeof(edad)}`)
 console.log(`${tieneMascota} tipo: ${typeof(tieneMascota)}`)
 
-//REVISAR
 let mascota = function(){
     if (tieneMascota){
         return "tiene mascota"

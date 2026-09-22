@@ -63,7 +63,7 @@ const cursosDestacados = cursos.filter(function (curso) {
   }
 });
 
-// Preguntar por imprimir estudiante
+// Recorrer con forEach para mostrar todo
 console.dir(cursosDestacados);
 
 cursosDestacados.forEach((curso) => {

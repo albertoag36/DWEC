@@ -1,18 +1,12 @@
 const suma = (a, b) => a + b
 const resta = (a, b) => a - b
 
-// potencia debe lanzar un error si el exponente es negativo
-// (pista: usa cuerpo de bloque y throw)
 const potencia = (base, exponente) => {
-    try {
-        if (exponente < 0){
-            throw "El exponente debe ser positivo"
-        }
-        return Math.pow(base, exponente)
-    } catch (e) {
-        console.log(e)
+    if (exponente < 0) {
+        throw new Error("El exponente debe ser positivo");
     }
-}
+    return Math.pow(base, exponente);
+};
 
 const aplicarOperacion = (a, b, operacion) => {
     switch (operacion) {

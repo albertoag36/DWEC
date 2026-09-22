@@ -19,7 +19,7 @@ export const calcularValorTotalInventario = (inventario) => {
     return valorTotal
 }
 
-export default function resumenInventario(inventario) {
+const resumenInventario = (inventario) => {
     let categoriaComparar = []
     let numeroCategoriasDistintas = 0
     inventario.forEach(producto => {
@@ -36,3 +36,5 @@ export default function resumenInventario(inventario) {
 
     return resumen
 }
+
+export default resumenInventario

@@ -1,0 +1,8 @@
+{
+  "name": "tienda-de-musica",
+  "type": "module",
+  "scripts": {
+    "pruebas": "node pruebas.js",
+    "informe": "node main.js"
+  }
+}

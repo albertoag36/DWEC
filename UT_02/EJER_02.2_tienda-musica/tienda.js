@@ -90,7 +90,9 @@ export const tresMasBaratos = (catalogo) => {
 //     y minúsculas, o undefined si no existe.
 export const buscarProducto = (catalogo, nombre) => {
   // Tu código aquí
-  return catalogo.find(objeto => objeto.nombre.toLowerCase() === nombre.toLowerCase())
+  return catalogo.find(
+    (producto) => producto.nombre.toLowerCase() === nombre.toLowerCase(),
+  );
 };
 
 // 2.2 Devuelve true si existe un producto con ese nombre.
@@ -137,20 +139,21 @@ export const valorAlmacen = (catalogo) => {
   );
 };
 
-// ------ REVISAR -------
-
 // 3.2 Devuelve el producto (el objeto completo) más caro.
 export const productoMasCaro = (catalogo) => {
   // Tu código aquí
+  return catalogo
+    .map((producto) => producto)
+    .sort((a, b) => b.precio - a.precio)[0];
 };
-
-// ------ REVISAR -------
 
 // 3.3 Devuelve un objeto con las unidades en stock de cada categoría:
 //     { equipos: 7, accesorios: 29, discos: 14 }
-export const unidadesPorCategoria = (catalogo) => {
-  // Tu código aquí
-};
+export const unidadesPorCategoria = (catalogo) =>
+  catalogo.reduce((acc, producto) => {
+    acc[producto.categoria] = (acc[producto.categoria] ?? 0) + producto.stock;
+    return acc;
+  }, {});
 
 // 3.4 Devuelve true si hay AL MENOS un producto agotado.
 export const hayAgotados = (catalogo) => {
@@ -189,21 +192,31 @@ export const parsearPedido = (texto) => {
   return { cliente, lineas };
 };
 
+// REVISAR EL 4.3 DE PRUEBAS
+
 // 4.2 Devuelve true si TODOS los productos del pedido existen
 //     y tienen stock suficiente.
 export const puedeServirse = (catalogo, pedido) => {
   // Tu código aquí
-  const nombre = pedido.lineas.map(linea => linea.nombre)
-  console.log(nombre)
-  const buscarProductoPedido = buscarProducto(catalogo, nombre)
-  console.log(buscarProducto)
-
-  return catalogo.every(producto => producto.pedido === buscarProductoPedido && producto.stock > 0)
+  return pedido.lineas.every(
+    (linea) =>
+      buscarProducto(catalogo, linea.nombre)?.nombre === linea.nombre &&
+      buscarProducto(catalogo, linea.nombre)?.stock >= linea.cantidad,
+  );
 };
 
 // 4.3 Devuelve el importe total del pedido.
 export const totalPedido = (catalogo, pedido) => {
   // Tu código aquí
+  return pedido.lineas.reduce(
+    (suma, linea) =>
+      suma +
+      linea.cantidad *
+        catalogo
+          .filter((producto) => producto.nombre === linea.nombre)
+          .map((producto) => producto.precio),
+    0,
+  );
 };
 
 // 4.4 Devuelve un catálogo NUEVO en el que se ha restado del stock
@@ -211,6 +224,15 @@ export const totalPedido = (catalogo, pedido) => {
 //     Pista: { ...producto, stock: nuevoStock } crea una copia del objeto.
 export const servirPedido = (catalogo, pedido) => {
   // Tu código aquí
+  return catalogo.map((producto) => {
+    return {
+      ...producto,
+      stock:
+        producto.stock -
+        pedido.lineas.find((linea) => linea.nombre === producto.nombre)
+          ?.cantidad,
+    };
+  });
 };
 
 // 4.5 Devuelve el ticket del pedido como un único texto:
@@ -220,7 +242,15 @@ export const servirPedido = (catalogo, pedido) => {
 //     TOTAL: 260 €
 //     Pista: construye un array de líneas y únelas con '\n'.
 export const generarTicket = (catalogo, pedido) => {
-  // Tu código aquí
+  const lineas = pedido.lineas.map((linea) => {
+    return `${linea.cantidad} x ${linea.nombre} = ${linea.cantidad * catalogo.find((p) => p.nombre === linea.nombre).precio} €`;
+  });
+
+  return [
+    `Cliente: ${pedido.cliente}`,
+    ...lineas,
+    `TOTAL: ${totalPedido(catalogo, pedido)} €`,
+  ].join("\n");
 };
 
 // ================================================================
@@ -232,18 +262,22 @@ export const generarTicket = (catalogo, pedido) => {
 //     saca y devuelve el primer pedido de la cola.
 export const atenderSiguiente = (cola) => {
   // Tu código aquí
+  return cola.shift();
 };
 
 // 5.2 Coloca el pedido al PRINCIPIO de la cola y devuelve
 //     la nueva longitud de la cola.
 export const agregarUrgente = (cola, pedido) => {
   // Tu código aquí
+  return cola.unshift(pedido);
 };
 
 // 5.3 Añade el nombre al final del carrito y apunta la acción en el
 //     historial: { accion: 'agregar', nombre }
 export const agregarAlCarrito = (carrito, historial, nombre) => {
-  // Tu código aquí
+  carrito.push(nombre);
+  historial.push({ accion: "agregar", nombre });
+  return [carrito, historial];
 };
 
 // 5.4 Quita la PRIMERA aparición del nombre en el carrito y apunta en
@@ -251,6 +285,13 @@ export const agregarAlCarrito = (carrito, historial, nombre) => {
 //     Devuelve true, o false (sin tocar nada) si no estaba.
 export const quitarDelCarrito = (carrito, historial, nombre) => {
   // Tu código aquí
+  let posicion = carrito.indexOf(nombre)
+  if (posicion == -1){
+    return false
+  }
+  carrito.splice(posicion, 1)
+  historial.push({ accion: 'quitar', nombre, posicion })
+  return true
 };
 
 // 5.5 PILA (la última acción es la primera en deshacerse):
@@ -260,6 +301,15 @@ export const quitarDelCarrito = (carrito, historial, nombre) => {
 //     Devuelve true, o false si el historial estaba vacío.
 export const deshacer = (carrito, historial) => {
   // Tu código aquí
+  if (historial.length === 0){
+    return false
+  }
+  let accion = "agregar || quitar"
+  switch (accion){
+    case "agregar":
+      let posicion = carrito.lastIndexOf(accion)
+  }
+  return true
 };
 
 // ================================================================

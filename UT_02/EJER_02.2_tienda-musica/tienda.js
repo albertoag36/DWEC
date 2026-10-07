@@ -82,6 +82,7 @@ export const tresMasBaratos = (catalogo) => {
 //     y minúsculas, o undefined si no existe.
 export const buscarProducto = (catalogo, nombre) => {
   // Tu código aquí
+  return catalogo.find(producto => producto.nombre.toLowerCase() === nombre.toLowerCase())
 };
 
 // 2.2 Devuelve true si existe un producto con ese nombre.
@@ -153,15 +154,20 @@ export const parsearPedido = (texto) => {
   // Tu código aquí
 };
 
+// REVISAR EL 4.3 DE PRUEBAS
+
 // 4.2 Devuelve true si TODOS los productos del pedido existen
 //     y tienen stock suficiente.
 export const puedeServirse = (catalogo, pedido) => {
   // Tu código aquí
+  return pedido.lineas.every(linea => buscarProducto(catalogo, linea.nombre)?.nombre === linea.nombre && buscarProducto(catalogo, linea.nombre)?.stock >= linea.cantidad)
+
 };
 
 // 4.3 Devuelve el importe total del pedido.
 export const totalPedido = (catalogo, pedido) => {
   // Tu código aquí
+  return pedido.lineas.reduce((suma, linea) => suma + (linea.cantidad * catalogo.filter(producto => producto.nombre === linea.nombre).map(producto => producto.precio)), 0)
 };
 
 // 4.4 Devuelve un catálogo NUEVO en el que se ha restado del stock
@@ -169,6 +175,7 @@ export const totalPedido = (catalogo, pedido) => {
 //     Pista: { ...producto, stock: nuevoStock } crea una copia del objeto.
 export const servirPedido = (catalogo, pedido) => {
   // Tu código aquí
+  return catalogo.map(producto => producto.stock - pedido.lineas.filter(linea => linea.nombre === producto.nombre).map(linea => linea.cantidad))
 };
 
 // 4.5 Devuelve el ticket del pedido como un único texto:
@@ -179,6 +186,11 @@ export const servirPedido = (catalogo, pedido) => {
 //     Pista: construye un array de líneas y únelas con '\n'.
 export const generarTicket = (catalogo, pedido) => {
   // Tu código aquí
+  let nombreCliente = pedido.cliente
+  let nombresPedido = pedido.lineas(linea => linea.nombre)
+  let cantidadPedido = pedido.lineas(linea => linea.cantidad)
+  let precioProducto 
+  let precioTotal = totalPedido(catalogo,pedido)
 };
 
 // ================================================================

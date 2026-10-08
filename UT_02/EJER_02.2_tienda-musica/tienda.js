@@ -212,9 +212,9 @@ export const totalPedido = (catalogo, pedido) => {
     (suma, linea) =>
       suma +
       linea.cantidad *
-        catalogo
-          .filter((producto) => producto.nombre === linea.nombre)
-          .map((producto) => producto.precio),
+      catalogo
+        .filter((producto) => producto.nombre === linea.nombre)
+        .map((producto) => producto.precio),
     0,
   );
 };
@@ -286,7 +286,7 @@ export const agregarAlCarrito = (carrito, historial, nombre) => {
 export const quitarDelCarrito = (carrito, historial, nombre) => {
   // Tu código aquí
   let posicion = carrito.indexOf(nombre)
-  if (posicion == -1){
+  if (posicion == -1) {
     return false
   }
   carrito.splice(posicion, 1)
@@ -301,13 +301,18 @@ export const quitarDelCarrito = (carrito, historial, nombre) => {
 //     Devuelve true, o false si el historial estaba vacío.
 export const deshacer = (carrito, historial) => {
   // Tu código aquí
-  if (historial.length === 0){
+  if (historial.length === 0) {
     return false
   }
-  let accion = "agregar || quitar"
-  switch (accion){
+
+  switch (historial[0].accion) {
     case "agregar":
-      let posicion = carrito.lastIndexOf(accion)
+      historial.pop()
+      carrito.pop()
+      break
+    case "quitar":
+      carrito.splice(0, 0, historial[0].nombre)
+      break
   }
   return true
 };

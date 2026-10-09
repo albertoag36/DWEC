@@ -215,9 +215,9 @@ export const totalPedido = (catalogo, pedido) => {
     (suma, linea) =>
       suma +
       linea.cantidad *
-        catalogo
-          .filter((producto) => producto.nombre === linea.nombre)
-          .map((producto) => producto.precio),
+      catalogo
+        .filter((producto) => producto.nombre === linea.nombre)
+        .map((producto) => producto.precio),
     0,
   );
 };
@@ -366,8 +366,13 @@ export const productosVendidos = (pedidos) => {
 //     Obligatorio: crea la barra con new Array(...).fill('■')
 export const graficoStock = (catalogo) => {
   // Tu código aquí
-  return catalogo.map(({nombre, stock}) => {
-    const barra = new Array(stock).fill('■').join('')
-    return `${nombre}: ${barra} (${stock})`
+  // return catalogo.map(({nombre, stock}) => {
+  //   const barra = new Array(stock).fill('■').join('')
+  //   return `${nombre}: ${barra} (${stock})`
+  // })
+
+  return catalogo.map(pedido => {
+    const barra = new Array(pedido.stock).fill('■').join('')
+    return `${pedido.nombre}: ${barra} (${pedido.stock})`
   })
 };

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica de DOM</title>
+    <link rel="stylesheet" href="estilos.css">
+
+</head>
+
+<body>
+
+    <header id="header-principal">
+        <h1 id="titulo-principal">Conceptos del DOM</h1>
+        <nav class="navegacion">
+            <a href="#">Inicio</a>
+            <a href="#">Cursos</a>
+            <a href="#">Contacto</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section id="lista-cursos">
+            <div class="card">
+                <img src="img/hacer1.jpg" width="200">
+                <div class="info">
+                    <p class="categoria">Desarrollo Web</p>
+                    <h2>Curso de JavaScript Moderno</h2>
+                </div>
+            </div>
+
+            <div class="card premium">
+                <img src="img/hacer2.jpg" width="200">
+                <div class="info">
+                    <p class="categoria">Diseño</p>
+                    <h2>Curso de CSS Grid y Flexbox</h2>
+                    <button id="btn-info-premium">Más Información</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="img/hacer3.jpg" width="200">
+                <div class="info">
+                    <p class="categoria">Desarrollo Web</p>
+                    <h2>Introducción a React</h2>
+                    <p class="oculto" data-precio="20">Este es un texto oculto con información.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="formulario-seccion">
+            <form id="formulario-contacto">
+                <h2>Contacta con nosotros</h2>
+                <input type="text" id="nombre" name="nombre" placeholder="Tu Nombre">
+                <input type="email" id="email" name="email" placeholder="Tu Email">
+                <textarea id="mensaje" name="mensaje" placeholder="Tu Mensaje"></textarea>
+                <input type="submit" value="Enviar">
+            </form>
+        </section>
+    </main>
+
+    <footer id="footer-principal">
+        <p>Todos los derechos reservados &copy; 2025</p>
+    </footer>
+
+    <!-- <script type="module" src="./scripts/1.js"></script> -->
+    <!-- <script type="module" src="./scripts/2.js"></script> -->
+    <!-- <script type="module" src="./scripts/3.js"></script> -->
+    <!-- <script type="module" src="./scripts/4.js"></script> -->
+    <!-- <script type="module" src="./scripts/5.js"></script> -->
+    <!-- <script type="module" src="./scripts/6.js"></script> -->
+    <!-- <script type="module" src="./scripts/7.js"></script> -->
+    <!-- <script type="module" src="./scripts/8.js"></script> -->
+    <!-- <script type="module" src="./scripts/9.js"></script> -->
+    <!-- <script type="module" src="./scripts/10.js"></script> -->
+    <!-- <script type="module" src="./scripts/11.js"></script> -->
+    <script type="module" src="./scripts/12.js"></script>
+</body>
+
+</html>

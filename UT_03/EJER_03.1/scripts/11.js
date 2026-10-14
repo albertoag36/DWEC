@@ -1,0 +1,1 @@
+console.log(document.getElementById('titulo-principal').classList.add('titulo-grande'))

@@ -1,0 +1,1 @@
+console.log(document.querySelector('.navegacion a:nth-child(3)').textContent += (" (" + document.querySelectorAll('.card').length + " Cursos)"))

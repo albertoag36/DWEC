@@ -1,0 +1,1 @@
+console.log(document.querySelector('.navegacion a').href = 'https://www.google.com')

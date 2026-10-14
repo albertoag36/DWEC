@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejemplos sencillos UT 3.2</title>
+  <style>
+    .alerta { padding: 12px 16px; border-radius: 6px; color: #3c763d; background: #dff0d8; }
+    .oculto { display: none; }
+    .resaltado { background: #fff3c4; }
+    .tema-oscuro { background: #14213d; color: #f7f5ef; }
+    .tarjeta { border: 1px solid #ccc; border-radius: 8px; padding: 8px 12px; margin: 8px 0; }
+  </style>
+</head>
+<body>
+  <main id="principal">
+    <h1>Contactos</h1>
+    <table id="tabla-contactos">
+      <thead>
+        <tr><th>Nombre</th><th>Apellido</th><th>Email</th></tr>
+      </thead>
+      <tbody>
+        <tr class="fila"><td>Juan</td><td>Pérez</td><td>juan@ejemplo.es</td></tr>
+        <tr class="fila"><td>Lucía</td><td>Gómez</td><td>lucia@ejemplo.com</td></tr>
+      </tbody>
+    </table>
+    <section id="zona-pruebas">
+      <p id="noticia"><strong>Noticia:</strong> nuevo álbum de <em>Ben Harper</em><span class="oculto"> (exclusiva)</span></p>
+      <ul id="lista">
+        <li>Uno</li>
+        <li>Dos</li>
+      </ul>
+    </section>
+    <form id="form-contacto">
+      <input id="campo-nombre" name="nombre" value="Juan">
+      <label><input type="checkbox" id="campo-activo" checked> Activo</label>
+      <a id="enlace-ayuda" href="ayuda.html" class="enlace">Ayuda</a>
+    </form>
+    <div id="tarjetas"></div>
+  </main>
+  <template id="plantilla-tarjeta">
+    <article class="tarjeta">
+      <h3 class="tarjeta-nombre"></h3>
+      <a class="tarjeta-email"></a>
+    </article>
+  </template>
+  <script type="module" src="main.js"></script>
+</body>
+</html>

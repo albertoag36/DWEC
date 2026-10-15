@@ -1,0 +1,1 @@
+document.querySelectorAll('.card .categoria').forEach(categoria => categoria.textContent === 'Desarrollo Web' ? categoria.closest('.card').style.backgroundColor = 'black' : null)

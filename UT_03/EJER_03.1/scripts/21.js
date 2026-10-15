@@ -1,0 +1,1 @@
+console.log(document.getElementById("btn-info-premium").addEventListener(onclick = () => alert('Accediendo a información exclusiva para miembros premium')))

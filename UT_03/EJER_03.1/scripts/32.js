@@ -1,0 +1,1 @@
+document.querySelectorAll('.card').forEach(tarjeta => tarjeta.querySelector('img').classList.add('imagen-curso'))

@@ -1,0 +1,1 @@
+console.log(document.getElementById('formulario-seccion').querySelector('textarea').placeholder = 'Escribe aquí tu consulta')

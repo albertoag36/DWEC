@@ -1,0 +1,1 @@
+console.log(document.getElementById('footer-principal').previousElementSibling.style.border = "2px solid red")

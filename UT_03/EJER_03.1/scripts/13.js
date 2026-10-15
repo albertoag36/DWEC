@@ -1,0 +1,1 @@
+console.log(document.querySelector(".card:nth-child(1) img").src = '../img/hacer4.jpg')

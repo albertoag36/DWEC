@@ -1,0 +1,1 @@
+console.log(document.querySelector('.premium').querySelector('h2').textContent)

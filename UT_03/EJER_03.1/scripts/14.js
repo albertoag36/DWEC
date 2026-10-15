@@ -1,0 +1,1 @@
+console.log(document.getElementById("btn-info-premium").textContent = "Ver Detalles Premium")

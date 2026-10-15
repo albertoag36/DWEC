@@ -1,0 +1,1 @@
+console.log(document.querySelector('.navegacion a:nth-child(2)').parentElement.parentElement.firstElementChild.style.color = 'orange')

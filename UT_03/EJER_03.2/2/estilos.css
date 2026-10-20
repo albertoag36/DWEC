@@ -1,0 +1,42 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f6f8;
+  margin: 0;
+  padding: 40px 16px;
+}
+
+.faq {
+  list-style: none;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.faq li {
+  background: #fff;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  padding: 16px 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.faq h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  cursor: pointer;
+  color: #1a3c6e;
+}
+
+.faq h2:hover {
+  color: royalblue;
+}
+
+.faq p {
+  margin: 12px 0 0;
+  line-height: 1.5;
+  color: #333;
+}
+
+.oculto {
+  display: none;
+}

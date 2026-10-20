@@ -1,0 +1,31 @@
+.galeria {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#imagen-principal {
+    width: 100%;
+    display: block;
+    border-radius: 8px;
+}
+
+.miniaturas {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.miniatura {
+    width: 25%;
+    cursor: pointer;
+    border-radius: 4px;
+    opacity: 0.7;
+}
+
+.miniatura:hover {
+    opacity: 1;
+}
+
+.activa {
+    border: 10px solid black;
+}

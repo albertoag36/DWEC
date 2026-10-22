@@ -1,0 +1,57 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f6f8;
+  margin: 0;
+  padding: 40px 16px;
+}
+
+.pestanas {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+#botones-pestanas {
+  display: flex;
+  gap: 4px;
+}
+
+.boton-pestana {
+  padding: 10px 20px;
+  background: #dfe5ee;
+  color: #333;
+  border: none;
+  border-radius: 8px 8px 0 0;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.boton-pestana:hover {
+  background: #cdd6e4;
+}
+
+.boton-pestana.activa {
+  background: royalblue;
+  color: #fff;
+}
+
+#contenido-pestanas {
+  background: #fff;
+  padding: 24px;
+  border-radius: 0 8px 8px 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.contenido h2 {
+  margin: 0 0 12px;
+  color: #1a3c6e;
+}
+
+.contenido p {
+  margin: 0;
+  line-height: 1.5;
+  color: #333;
+}
+
+.oculto {
+  display: none;
+}

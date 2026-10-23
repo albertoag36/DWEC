@@ -1,0 +1,86 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: #f3f4f6;
+  color: #1f2937;
+  line-height: 1.6;
+}
+
+.contenedor {
+  max-width: 700px;
+  margin: 3rem auto;
+  padding: 1.5rem;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+h1 {
+  margin-bottom: 1.25rem;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.controles {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+input[type="number"] {
+  flex: 1;
+  min-width: 0;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+input[type="number"]:focus {
+  outline: 2px solid #2563eb;
+  border-color: transparent;
+}
+
+button {
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background: #1d4ed8;
+}
+
+button:active {
+  background: #1e40af;
+}
+
+/* Resultado */
+#resultado p {
+  margin-bottom: 1rem;
+  text-align: justify;
+  padding-left: 0.9rem;
+  border-left: 3px solid #2563eb;
+}
+
+#resultado p:last-child {
+  margin-bottom: 0;
+}
+
+#resultado:empty::before {
+  content: "Indica cuántos párrafos quieres y pulsa «Generar»";
+  display: block;
+  text-align: center;
+  color: #9ca3af;
+  font-style: italic;
+}

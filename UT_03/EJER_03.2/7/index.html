@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrito de la compra</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <main class="contenedor">
+    <h1>Tienda</h1>
+
+    <section class="productos">
+      <h2>Productos</h2>
+      <ul id="lista-productos">
+        <li data-price="1.20">
+          <span class="nombre">Manzanas (1 kg)</span>
+          <span class="precio">1,20 €</span>
+          <button type="button">Añadir al carrito</button>
+        </li>
+        <li data-price="0.95">
+          <span class="nombre">Pan de barra</span>
+          <span class="precio">0,95 €</span>
+          <button type="button">Añadir al carrito</button>
+        </li>
+        <li data-price="1.10">
+          <span class="nombre">Leche (1 L)</span>
+          <span class="precio">1,10 €</span>
+          <button type="button">Añadir al carrito</button>
+        </li>
+        <li data-price="3.50">
+          <span class="nombre">Queso curado</span>
+          <span class="precio">3,50 €</span>
+          <button type="button">Añadir al carrito</button>
+        </li>
+        <li data-price="2.30">
+          <span class="nombre">Docena de huevos</span>
+          <span class="precio">2,30 €</span>
+          <button type="button">Añadir al carrito</button>
+        </li>
+      </ul>
+    </section>
+
+    <section class="carrito">
+      <h2>Carrito</h2>
+      <ul id="carrito"></ul>
+      <p class="total">Total: <span id="total">0.00</span> €</p>
+    </section>
+  </main>
+
+  <script type="module" src="7.js"></script>
+</body>
+</html>

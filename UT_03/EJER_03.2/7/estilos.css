@@ -1,0 +1,125 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: #f3f4f6;
+  color: #1f2937;
+  line-height: 1.5;
+}
+
+.contenedor {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+h1 {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: #111827;
+}
+
+h2 {
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+section {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 1.25rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+ul {
+  list-style: none;
+}
+
+/* Lista de productos */
+.productos li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.productos li:last-child {
+  border-bottom: none;
+}
+
+.productos .nombre {
+  flex: 1;
+  font-weight: 500;
+}
+
+.productos .precio {
+  color: #059669;
+  font-weight: 600;
+}
+
+button {
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.45rem 0.8rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background: #1d4ed8;
+}
+
+button:active {
+  background: #1e40af;
+}
+
+/* Carrito */
+#carrito li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+#carrito:empty::before {
+  content: "El carrito está vacío";
+  color: #9ca3af;
+  font-style: italic;
+}
+
+#carrito li button {
+  background: #dc2626;
+  margin-left: 0.75rem;
+}
+
+#carrito li button:hover {
+  background: #b91c1c;
+}
+
+.total {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 2px solid #1f2937;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-align: right;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .contenedor {
+    grid-template-columns: 1fr;
+  }
+}

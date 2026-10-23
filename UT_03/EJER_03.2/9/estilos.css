@@ -1,0 +1,101 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: #f3f4f6;
+  color: #1f2937;
+  line-height: 1.5;
+}
+
+.contenedor {
+  max-width: 500px;
+  margin: 3rem auto;
+  padding: 1.5rem;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+h1 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.controles {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+input[type="text"] {
+  flex: 1;
+  min-width: 0;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+input[type="text"]:focus {
+  outline: 2px solid #2563eb;
+  border-color: transparent;
+}
+
+button {
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.6rem 0.9rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+button:hover {
+  background: #1d4ed8;
+}
+
+button.secundario {
+  background: #6b7280;
+}
+
+button.secundario:hover {
+  background: #4b5563;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.65rem 0.9rem;
+  border-bottom: 1px solid #e5e7eb;
+  transition: background 0.2s;
+}
+
+li:first-child {
+  border-top: 1px solid #e5e7eb;
+}
+
+li:hover {
+  background: #eff6ff;
+}
+
+li .pais {
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+/* Clase para ocultar elementos desde JS */
+.oculto {
+  display: none;
+}

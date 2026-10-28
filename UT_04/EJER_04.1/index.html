@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EJER_04.1 · Eventos en JavaScript</title>
+  <link rel="stylesheet" href="estilos.css">
+  <!-- Todo el JavaScript va en un único módulo ES6 (puedes importar otros desde aquí) -->
+  <script type="module" src="principal.js"></script>
+</head>
+<body>
+
+  <header class="cabecera">
+    <h1>EJER_04.1 · Eventos en JavaScript</h1>
+    <p>No hay que tocar este HTML ni el CSS: todo se resuelve en <code>principal.js</code>.</p>
+    <nav class="indice" aria-label="Índice de ejercicios">
+      <a href="#ej01">1</a><a href="#ej02">2</a><a href="#ej03">3</a><a href="#ej04">4</a><a href="#ej05">5</a><a href="#ej06">6</a><a href="#ej07">7</a><a href="#ej08">8</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ============ 1 · Contador de clics ============ -->
+    <section id="ej01" class="ejercicio">
+      <h2><span class="numero">1</span> Contador de clics</h2>
+      <p class="enunciado">Los botones <b>+</b> y <b>−</b> suman y restan 1 al valor; <b>Reiniciar</b> lo pone a 0.
+        El valor se pone en rojo si es negativo.</p>
+      <div class="zona zona-fila">
+        <button id="boton-restar" type="button">−</button>
+        <span id="valor-contador" class="valor">0</span>
+        <button id="boton-sumar" type="button">+</button>
+        <button id="boton-reiniciar" type="button" class="secundario">Reiniciar</button>
+      </div>
+    </section>
+
+    <!-- ============ 2 · Tarjeta sensible al ratón ============ -->
+    <section id="ej02" class="ejercicio">
+      <h2><span class="numero">2</span> Tarjeta sensible al ratón</h2>
+      <p class="enunciado">Al entrar con el ratón en la tarjeta se le añade la clase <code>activa</code> y el mensaje
+        pasa a «¡Estás dentro!». Al salir, se quita la clase y el mensaje vuelve a «Pasa el ratón por la tarjeta».
+        Un doble clic sobre ella cambia el texto de la tarjeta a «¡Doble clic!».</p>
+      <div class="zona">
+        <div id="tarjeta-raton" class="tarjeta-raton">Tarjeta</div>
+        <p id="mensaje-raton">Pasa el ratón por la tarjeta</p>
+      </div>
+    </section>
+
+    <!-- ============ 3 · Espejo de texto ============ -->
+    <section id="ej03" class="ejercicio">
+      <h2><span class="numero">3</span> Espejo de texto</h2>
+      <p class="enunciado">Mientras se escribe en el campo, el texto se copia al instante en «Has escrito» y se
+        actualizan los caracteres restantes (máximo 30). Cuando queden 5 o menos, el número se pone en naranja
+        (clase <code>poco</code>).</p>
+      <div class="zona">
+        <label for="campo-texto">Escribe algo:</label>
+        <input id="campo-texto" type="text" maxlength="30" placeholder="Máximo 30 caracteres" autocomplete="off">
+        <p>Has escrito: <strong id="eco-texto"></strong></p>
+        <p>Caracteres restantes: <span id="caracteres-restantes" class="valor-pequeno">30</span></p>
+      </div>
+    </section>
+
+    <!-- ============ 4 · Mover con el teclado ============ -->
+    <section id="ej04" class="ejercicio">
+      <h2><span class="numero">4</span> Mover con el teclado</h2>
+      <p class="enunciado">Con las flechas del teclado el cuadrado se mueve 10 píxeles por pulsación dentro del
+        área, sin salirse de ella. La tecla <b>Espacio</b> lo devuelve a la esquina superior izquierda.</p>
+      <div class="zona">
+        <div id="area-juego" class="area-juego">
+          <div id="cuadrado" class="cuadrado"></div>
+        </div>
+        <p id="posicion-cuadrado" class="pista">Posición: (0, 0)</p>
+      </div>
+    </section>
+
+    <!-- ============ 5 · Paleta de colores ============ -->
+    <section id="ej05" class="ejercicio">
+      <h2><span class="numero">5</span> Paleta de colores</h2>
+      <p class="enunciado">Al pulsar una muestra de la paleta, el lienzo toma su color y se escribe su nombre debajo.
+        Usa <b>un solo escuchador</b> en la paleta (delegación) y lee los datos de los atributos <code>data-color</code> y <code>data-nombre</code> con <code>getAttribute()</code>.</p>
+      <div class="zona">
+        <div id="paleta" class="paleta">
+          <div class="muestra" style="--color:#e53935" data-color="#e53935" data-nombre="Rojo"></div>
+          <div class="muestra" style="--color:#1e6fd9" data-color="#1e6fd9" data-nombre="Azul"></div>
+          <div class="muestra" style="--color:#2e9d57" data-color="#2e9d57" data-nombre="Verde"></div>
+          <div class="muestra" style="--color:#f9c823" data-color="#f9c823" data-nombre="Amarillo"></div>
+          <div class="muestra" style="--color:#8e44ad" data-color="#8e44ad" data-nombre="Morado"></div>
+        </div>
+        <div id="lienzo" class="lienzo">Lienzo</div>
+        <p>Color elegido: <strong id="nombre-color">ninguno</strong></p>
+      </div>
+    </section>
+
+    <!-- ============ 6 · Grupo con foco ============ -->
+    <section id="ej06" class="ejercicio">
+      <h2><span class="numero">6</span> Grupo con foco</h2>
+      <p class="enunciado">Cuando el foco entra en cualquiera de los campos, el grupo (<code>#grupo-contacto</code>)
+        recibe la clase <code>activo</code> y el mensaje indica el campo con el texto
+        «Editando: <i>placeholder del campo</i>». Cuando el foco sale del grupo, se quita la clase y el mensaje
+        vuelve a «Ningún campo activo». Pista: ¿qué eventos de foco burbujean?</p>
+      <div class="zona">
+        <fieldset id="grupo-contacto" class="grupo">
+          <legend>Datos de contacto</legend>
+          <input type="text" placeholder="Nombre" autocomplete="off">
+          <input type="text" placeholder="Apellidos" autocomplete="off">
+          <input type="text" placeholder="Correo" autocomplete="off">
+        </fieldset>
+        <p id="mensaje-foco">Ningún campo activo</p>
+      </div>
+    </section>
+
+    <!-- ============ 7 · Burbuja y captura ============ -->
+    <section id="ej07" class="ejercicio">
+      <h2><span class="numero">7</span> Burbuja y captura</h2>
+      <p class="enunciado">Cada caja registra en la lista su nombre al recibir un clic. <b>a)</b> Con escuchadores en
+        fase de burbuja, ¿en qué orden aparecen al pulsar la caja interna? Anota tu predicción y compruébala.
+        <b>b)</b> Añade escuchadores en fase de captura que escriban «(captura)» tras el nombre y comprueba el
+        nuevo orden. El botón <b>Limpiar</b> vacía el registro.</p>
+      <div class="zona">
+        <div id="caja-externa" class="caja nivel1">Externa
+          <div id="caja-media" class="caja nivel2">Media
+            <div id="caja-interna" class="caja nivel3">Interna</div>
+          </div>
+        </div>
+        <p><button id="boton-limpiar-flujo" type="button" class="secundario">Limpiar</button></p>
+        <ol id="registro-flujo" class="registro"></ol>
+      </div>
+    </section>
+
+    <!-- ============ 8 · Detener y cancelar ============ -->
+    <section id="ej08" class="ejercicio">
+      <h2><span class="numero">8</span> Detener y cancelar</h2>
+      <p class="enunciado">Cada mensaje se añade como una línea nueva en el recuadro de estado. Pulsar en cualquier parte de la tarjeta escribe «Has pulsado la tarjeta». El botón
+        <b>Comprar</b> escribe «Producto comprado» <u>sin</u> que se escriba el mensaje de la tarjeta. El enlace
+        no debe abrir la página: escribe «Enlace bloqueado».</p>
+      <div class="zona">
+        <div id="tarjeta-producto" class="tarjeta-producto">
+          <h3>Camiseta DWEC</h3>
+          <p>Algodón, talla única.</p>
+          <p>
+            <button id="boton-comprar" type="button">Comprar</button>
+            <a id="enlace-info" href="https://developer.mozilla.org/es/docs/Web/API/Event" target="_blank" rel="noopener">Más información</a>
+          </p>
+        </div>
+        <p id="mensaje-estado" class="estado"></p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="pie">DWEC · Eventos en JavaScript · EJER_04.1</footer>
+</body>
+</html>

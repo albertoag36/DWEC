@@ -1,0 +1,243 @@
+/* ==========================================================
+   EJER_04.1 · Eventos en JavaScript
+   Hoja de estilos de la página. NO es necesario modificarla.
+   Las clases de estado que usarás desde JavaScript son:
+   .activa  .activo  .poco
+   ========================================================== */
+
+:root {
+  --fondo: #f7f5ef;
+  --texto: #1b2230;
+  --texto-suave: #5b6472;
+  --borde: #e1ddd0;
+  --tarjeta: #ffffff;
+  --acento: #2f6fdd;
+  --naranja: #f2894a;
+  --verde: #2e7d4f;
+  --rojo: #b3261e;
+  --radio: 14px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--texto);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1.55;
+}
+
+code {
+  background: #ece8da;
+  padding: 1px 6px;
+  border-radius: 6px;
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 0.92em;
+}
+
+/* ---------- Cabecera e índice ---------- */
+.cabecera {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 24px 8px;
+}
+.cabecera h1 { margin: 0 0 8px; font-size: 2rem; }
+.cabecera p { margin: 0 0 16px; color: var(--texto-suave); }
+
+.indice { display: flex; flex-wrap: wrap; gap: 8px; }
+.indice a {
+  width: 38px; height: 38px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: var(--texto);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+}
+.indice a:hover { background: var(--acento); }
+
+/* ---------- Ejercicios ---------- */
+main { max-width: 900px; margin: 0 auto; padding: 8px 24px 40px; }
+
+.ejercicio {
+  background: var(--tarjeta);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: 24px 28px;
+  margin-top: 28px;
+  scroll-margin-top: 16px;
+}
+.ejercicio h2 {
+  display: flex; align-items: center; gap: 12px;
+  margin: 0 0 8px; font-size: 1.4rem;
+}
+.numero {
+  display: inline-grid; place-items: center;
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: var(--naranja);
+  color: #fff;
+  font-size: 1rem;
+}
+.enunciado { margin: 0 0 18px; color: var(--texto-suave); }
+.pista { color: var(--texto-suave); font-size: 0.95rem; }
+
+.zona {
+  background: #faf9f4;
+  border: 1px dashed var(--borde);
+  border-radius: 10px;
+  padding: 20px;
+}
+.zona-fila { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+
+/* ---------- Elementos de formulario básicos ---------- */
+button {
+  font: inherit;
+  padding: 8px 18px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--acento);
+  color: #fff;
+  cursor: pointer;
+}
+button:hover { filter: brightness(1.1); }
+button.secundario { background: #e9e5d6; color: var(--texto); }
+button:disabled { opacity: 0.45; cursor: not-allowed; }
+
+input[type="text"] {
+  font: inherit;
+  padding: 8px 12px;
+  border: 2px solid var(--borde);
+  border-radius: 8px;
+  background: #fff;
+  min-width: 220px;
+}
+input[type="text"]:focus { outline: none; border-color: var(--acento); }
+label { display: block; margin-bottom: 6px; font-weight: 600; }
+
+/* ---------- 1 · Contador ---------- */
+.valor {
+  min-width: 70px;
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+.valor-pequeno { font-weight: 700; }
+
+/* ---------- 2 · Tarjeta de ratón ---------- */
+.tarjeta-raton {
+  width: 240px; height: 110px;
+  display: grid; place-items: center;
+  border: 2px solid var(--borde);
+  border-radius: var(--radio);
+  background: #fff;
+  font-weight: 700;
+  transition: transform 0.2s, background 0.2s, border-color 0.2s;
+  user-select: none;
+}
+.tarjeta-raton.activa {
+  background: #eaf1ff;
+  border-color: var(--acento);
+  transform: scale(1.05);
+}
+
+/* ---------- 3 · Espejo de texto ---------- */
+#eco-texto { word-break: break-all; }
+#caracteres-restantes.poco { color: var(--naranja); font-size: 1.2rem; }
+
+/* ---------- 4 · Mover con el teclado ---------- */
+.area-juego {
+  position: relative;
+  width: 360px; height: 200px;
+  background: #eef4ff;
+  border: 2px solid var(--acento);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.cuadrado {
+  position: absolute;
+  left: 0; top: 0;
+  width: 40px; height: 40px;
+  background: var(--naranja);
+  border-radius: 8px;
+}
+
+/* ---------- 5 · Paleta ---------- */
+.paleta { display: flex; gap: 12px; margin-bottom: 16px; }
+.muestra {
+  width: 48px; height: 48px;
+  border-radius: 10px;
+  background: var(--color);
+  cursor: pointer;
+  border: 3px solid transparent;
+}
+.muestra:hover { border-color: var(--texto); }
+.lienzo {
+  height: 120px;
+  display: grid; place-items: center;
+  border: 2px dashed var(--borde);
+  border-radius: 10px;
+  background: #fff;
+  font-weight: 700;
+  margin-bottom: 8px;
+  transition: background 0.3s;
+}
+
+/* ---------- 6 · Grupo con foco ---------- */
+.grupo {
+  border: 2px solid var(--borde);
+  border-radius: 10px;
+  padding: 14px 18px;
+  display: flex; flex-wrap: wrap; gap: 10px;
+  transition: border-color 0.2s, background 0.2s;
+}
+.grupo.activo { border-color: var(--acento); background: #eaf1ff; }
+
+/* ---------- 7 · Burbuja y captura ---------- */
+.caja {
+  padding: 16px;
+  border: 2px solid var(--texto);
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.nivel1 { background: #fff1e4; max-width: 440px; }
+.nivel2 { background: #eaf1ff; margin: 10px 0 0 18px; }
+.nivel3 { background: #e5f4ea; margin: 10px 0 0 18px; }
+.registro {
+  min-height: 60px;
+  padding: 10px 10px 10px 36px;
+  margin: 0;
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 0.92rem;
+}
+
+/* ---------- 8 · Detener y cancelar ---------- */
+.tarjeta-producto {
+  max-width: 380px;
+  padding: 18px 22px;
+  background: #fff;
+  border: 2px solid var(--borde);
+  border-radius: var(--radio);
+  cursor: pointer;
+}
+.tarjeta-producto h3 { margin: 0 0 4px; }
+.tarjeta-producto a { margin-left: 14px; color: var(--acento); }
+.estado {
+  margin: 12px 0 0;
+  padding: 10px 14px;
+  background: #fff;
+  border-left: 5px solid var(--naranja);
+  border-radius: 6px;
+  white-space: pre-line;
+}
+.estado:empty::before { content: "Sin acciones todavía"; color: var(--texto-suave); }
+
+/* ---------- Pie ---------- */
+.pie { text-align: center; padding: 30px 0 60px; color: var(--texto-suave); }
+

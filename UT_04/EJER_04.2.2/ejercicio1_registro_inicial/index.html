@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Registro de usuario (versión inicial)</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 480px; margin: 24px auto; }
+    label { display: block; margin-top: 12px; }
+    input[type=text], input[type=email], input[type=password] { width: 100%; padding: 6px; box-sizing: border-box; }
+    .error { color: darkred; margin: 4px 0 0; font-size: 14px; }
+    .error:empty { display: none; }
+    .con-error { border: 2px solid darkred; }
+    button { margin: 16px 8px 0 0; padding: 6px 14px; }
+  </style>
+</head>
+<body>
+  <h1>Registro de usuario</h1>
+  <form id="registro">
+    <label for="usuario">Usuario</label>
+    <input type="text" id="usuario" name="usuario" required minlength="3" maxlength="15">
+    <p class="error" id="error-usuario"></p>
+
+    <label for="correo">Correo electrónico</label>
+    <input type="email" id="correo" name="correo" required>
+    <p class="error" id="error-correo"></p>
+
+    <label for="clave">Contraseña</label>
+    <input type="password" id="clave" name="clave" required minlength="8">
+    <p class="error" id="error-clave"></p>
+
+    <label><input type="checkbox" name="acepto" required> Acepto las condiciones de uso</label>
+    <p class="error" id="error-acepto"></p>
+
+    <button type="submit">Registrarse</button>
+    <button type="reset">Borrar</button>
+  </form>
+  <pre id="resultado"></pre>
+  <script type="module" src="js/registro.js"></script>
+</body>
+</html>

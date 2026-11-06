@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Reserva de viaje (versión inicial)</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 480px; margin: 24px auto; }
+    label { display: block; margin-top: 12px; }
+    input[type=text], input[type=number], input[type=date] { width: 100%; padding: 6px; box-sizing: border-box; }
+    .error { color: darkred; margin: 4px 0 0; font-size: 14px; }
+    .error:empty { display: none; }
+    .con-error { border: 2px solid darkred; }
+    button { margin: 16px 8px 0 0; padding: 6px 14px; }
+  </style>
+</head>
+<body>
+  <h1>Reserva de viaje</h1>
+  <p>Precio: 50 € por persona y noche.</p>
+  <form id="reserva">
+    <label for="nombre">Nombre completo</label>
+    <input type="text" id="nombre" name="nombre" required minlength="3" maxlength="40">
+    <p class="error" id="error-nombre"></p>
+
+    <label for="personas">Número de personas (1 a 6)</label>
+    <input type="number" id="personas" name="personas" required min="1" max="6" value="1">
+    <p class="error" id="error-personas"></p>
+
+    <label for="entrada">Fecha de entrada</label>
+    <input type="date" id="entrada" name="entrada" required>
+    <p class="error" id="error-entrada"></p>
+
+    <label for="salida">Fecha de salida</label>
+    <input type="date" id="salida" name="salida" required>
+    <p class="error" id="error-salida"></p>
+
+    <label><input type="checkbox" name="acepto" required> Acepto la política de cancelación</label>
+    <p class="error" id="error-acepto"></p>
+
+    <button type="submit">Reservar</button>
+    <button type="reset">Borrar</button>
+  </form>
+  <p id="total">Total estimado: 0.00 €</p>
+  <pre id="resultado"></pre>
+  <script type="module" src="js/reserva.js"></script>
+</body>
+</html>

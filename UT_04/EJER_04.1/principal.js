@@ -8,6 +8,7 @@
 // ---------- Ejercicio 1 · Contador de clics ----------
 let contador = 0
 const valorContador = document.getElementById('valor-contador')
+
 document.getElementById('boton-restar').addEventListener('click', () => {
     contador--
     valorContador.textContent = contador
@@ -25,9 +26,9 @@ document.getElementById('boton-reiniciar').addEventListener('click', () => {
     contador = 0
     valorContador.style.color = contador < 0 ? 'red' : ''
 })
-
 // ---------- Ejercicio 2 · Tarjeta sensible al ratón ----------
 const zona = document.getElementById('tarjeta-raton')
+
 zona.addEventListener('mouseover', () => {
     const p = document.getElementById('mensaje-raton')
     p.textContent = '¡Estás dentro!'
@@ -46,6 +47,7 @@ zona.addEventListener('dblclick', () => {
 })
 // ---------- Ejercicio 3 · Espejo de texto ----------
 const caracteresRestantes = document.getElementById('caracteres-restantes')
+
 document.getElementById('campo-texto').addEventListener('input', (e) => {
     if (e.target.value.length <= 30) {
         document.getElementById('eco-texto').textContent = e.target.value
@@ -54,21 +56,31 @@ document.getElementById('campo-texto').addEventListener('input', (e) => {
         Number(caracteresRestantes.textContent) <= 5 ? caracteresRestantes.classList.add('poco') : caracteresRestantes.classList.remove('poco')
     }
 })
-
 // ---------- Ejercicio 4 · Mover con el teclado ----------
 const cuadrado = document.getElementById('cuadrado')
+
 cuadrado.addEventListener('keydown', (e) => {
     if (e.key === 'Left Arrow Key') {
         cuadrado.style.left = '10px'
     }
 
 })
-
 // ---------- Ejercicio 5 · Paleta de colores ----------
+const lienzo = document.getElementById('lienzo')
+const nombreColor = document.getElementById('nombre-color')
 
+document.querySelectorAll('.muestra').forEach(paleta => {
+    paleta.addEventListener('click', () => {
+        const dataColor = paleta.getAttribute('data-color')
+        const dataNombre = paleta.getAttribute('data-nombre')
 
+        lienzo.style.background = dataColor
+        nombreColor.textContent = dataNombre
+
+    })
+})
 // ---------- Ejercicio 6 · Grupo con foco ----------
-
+document.querySelector()
 
 // ---------- Ejercicio 7 · Burbuja y captura ----------
 

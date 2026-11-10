@@ -120,12 +120,12 @@ const p = document.getElementById('mensaje-foco')
 
 document.getElementById('grupo-contacto').querySelectorAll('input').forEach(input => {
 
-    input.addEventListener('mouseover', () => {
+    input.addEventListener('focusin', () => {
         input.parentElement.classList.add('activo')
         p.textContent = 'Editando: placeholder del campo'
     })
 
-    input.addEventListener('mouseout', () => {
+    input.addEventListener('focusout', () => {
         input.parentElement.classList.remove('activo')
         p.textContent = 'Ningún campo activo'
     })

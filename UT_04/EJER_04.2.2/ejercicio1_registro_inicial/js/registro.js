@@ -9,8 +9,6 @@ formulario.noValidate = true;
 const mostrarError = (campo) => {
   const campoError = document.getElementById("error-" + campo.name);
 
-  console.log(campoError)
-
   if (!campoError) return true;
 
   campoError.textContent = campo.validationMessage;

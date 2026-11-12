@@ -53,3 +53,14 @@ formulario.addEventListener("submit", (e) => {
   resultado.textContent = JSON.stringify(datos, null, 2);
 });
 // 6. Evento reset: limpia el resultado y todos los errores
+formulario.addEventListener('reset', () => {
+  formulario.querySelectorAll('.con-error').forEach((campo) => {
+    campo.classList.remove('con-error')
+  })
+
+  formulario.querySelectorAll('.error').forEach((zona) => {
+    zona.textContent = ''
+  })
+
+  resultado.textContent = ''
+})

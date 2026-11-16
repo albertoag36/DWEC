@@ -4,6 +4,7 @@ const total = document.getElementById("total");
 const resultado = document.getElementById("resultado");
 const precioPersonaNoche = 50;
 
+const nombre = document.getElementById("nombre");
 const entrada = document.getElementById("entrada");
 const salida = document.getElementById("salida");
 const personas = document.getElementById("personas");
@@ -14,8 +15,8 @@ const hoy = new Date();
 
 const fechaParaInput = hoy.toISOString().slice(0, 10);
 
-entrada.value = fechaParaInput;
-salida.value = fechaParaInput;
+entrada.min = fechaParaInput;
+salida.min = fechaParaInput;
 // 2. Función mostrarError(campo), como en el ejercicio 1.1
 const mostrarError = (campo) => {
   const campoError = document.getElementById("error-" + campo.name);
@@ -28,81 +29,93 @@ const mostrarError = (campo) => {
   return campo.validity.valid;
 };
 // 3. Función comprobarReglas(): la salida debe ser posterior a la entrada (setCustomValidity)
+// const comprobarReglas = () => {
+//   if (salida.valueAsDate <= entrada.valueAsDate)
+//     salida.setCustomValidity(
+//       "La fecha de salida debe ser posterior a la de entrada",
+//     );
+// };
+
 const comprobarReglas = () => {
-
-  salida.setCustomValidity('')
-
-  if (!entrada.value || !salida.value) return
-
-  if (Date.parse(salida.value) <= Date.parse(entrada.value)) {
-    salida.setCustomValidity('La salida debe ser posterior a la entrada')
+  salida.setCustomValidity("");
+  if (entrada.value && salida.value && calcularNoches() <= 0) {
+    salida.setCustomValidity(
+      "La fecha de salida debe ser posterior a la de entrada",
+    );
   }
-}
+};
 // 4. Funciones calcularNoches() y calcularTotal()
 const calcularNoches = () => {
-  const diferencia = new Date(salida.value) - new Date(entrada.value);
-  return diferencia / 86400000;
-}
+  const noches = (new Date(salida.value) - new Date(entrada.value)) / 86400000;
+  return Number.isNaN(noches) ? 0 : noches;
+};
 
 const calcularTotal = () => {
-  const totalValor = personas.valueAsNumber * calcularNoches() * precioPersonaNoche
-  total.textContent = `Total estimado: ${totalValor.toFixed(2)}€`
-}
+  const n = personas.valueAsNumber;
+  const numPersonas = Number.isNaN(n) ? 0 : n;
+  const noches = Math.max(0, calcularNoches());
+  const totalCalculado = numPersonas * noches * precioPersonaNoche;
+
+  total.textContent = `Total estimado: ${totalCalculado.toFixed(2)} €`;
+  return totalCalculado;
+};
 // 5. Eventos input y focusout en el formulario
 formulario.addEventListener("input", (e) => {
-  // La regla cruzada depende de ambos campos: recalcular al cambiar cualquiera
-  if (e.target === entrada || e.target === salida) comprobarReglas();
+  comprobarReglas();
 
-  if (e.target.classList.contains("con-error")) mostrarError(e.target);
+  if (e.target.classList.contains("con-error")) {
+    mostrarError(e.target);
+  }
 
-  // Si cambia la entrada, refrescar también el error visible de la salida
-  if (e.target === entrada && salida.classList.contains("con-error")) {
+  if (e.target === entrada && salida.value !== "") {
     mostrarError(salida);
   }
+
+  calcularTotal();
 });
 
 formulario.addEventListener("focusout", (e) => {
-  if (!e.target.willValidate) return;
-
-  // Asegura que el mensaje personalizado esté al día antes de mostrarlo
-  if (e.target === entrada || e.target === salida) comprobarReglas();
-
+  if (!e.target.matches("input")) return;
+  comprobarReglas();
   mostrarError(e.target);
-
-  calcularTotal()
 });
 // 6. Evento submit: valida todos los campos y muestra el resumen de la reserva
 formulario.addEventListener("submit", (e) => {
   e.preventDefault();
+  comprobarReglas();
 
-  const campos = [...formulario.elements].filter((el) => el.willValidate);
-  let primerInvalido = null;
+  const campos = Array.from(formulario.elements).filter((el) =>
+    el.matches("input"),
+  );
+  const invalidos = campos.filter((campo) => !mostrarError(campo));
 
-  campos.forEach((campo) => {
-    if (!mostrarError(campo) && !primerInvalido) {
-      primerInvalido = campo;
-    }
-  });
-
-  if (primerInvalido) {
-    primerInvalido.focus();
+  if (invalidos.length > 0) {
+    invalidos[0].focus();
     resultado.textContent = "";
     return;
   }
 
   const datos = Object.fromEntries(new FormData(formulario));
-  resultado.textContent = JSON.stringify(datos, null, 2);
+
+  resultado.textContent =
+    `Reserva de ${datos.nombre}\n` +
+    `Personas: ${datos.personas}\n` +
+    `Entrada: ${datos.entrada}\n` +
+    `Salida: ${datos.salida}\n` +
+    `Noches: ${calcularNoches()}\n` +
+    `Total: ${calcularTotal().toFixed(2)} €`;
 });
 // 7. Evento reset
-formulario.addEventListener('reset', () => {
-  entrada.value = fechaParaInput;
-  salida.value = fechaParaInput;
-  total.textContent = 'Total estimado: 0.00 €'
-  resultado.textContent = ''
+formulario.addEventListener("reset", () => {
+  salida.setCustomValidity("");
 
-  formulario.querySelectorAll('.error').forEach((zona) => {
-    zona.textContent = ''
-  })
+  formulario.querySelectorAll(".con-error").forEach((campo) => {
+    campo.classList.remove("con-error");
+  });
+  formulario.querySelectorAll(".error").forEach((zona) => {
+    zona.textContent = "";
+  });
 
-  resultado.textContent = ''
-})
+  total.textContent = "Total estimado: 0.00 €";
+  resultado.textContent = "";
+});

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista de la compra</title>
+  <style>
+    .activo { outline: 2px solid orange; }
+    li { margin: 6px 0; }
+  </style>
+</head>
+<body>
+  <form id="formulario-compra">
+    <input type="text" name="producto" placeholder="Producto" required>
+    <input type="number" name="precio" placeholder="Precio" min="0" step="0.01" required>
+    <input type="number" name="unidades" placeholder="Unidades" min="1" value="1" required>
+    <button type="submit">Añadir</button>
+  </form>
+  <input type="text" id="buscador" placeholder="Buscar producto...">
+  <ul id="lista"></ul>
+  <p id="total"></p>
+  <script type="module" src="js/principal.js"></script>
+</body>
+</html>

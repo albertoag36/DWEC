@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tablero de tareas</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <header class="cabecera">
+    <h1>Tablero de tareas</h1>
+    <p>2.º DAW · semana de entregas</p>
+  </header>
+
+  <main class="cuerpo">
+
+    <!-- Columna lateral: formulario (apartado 1) y resumen (apartado 3) -->
+    <aside class="lateral">
+
+      <section class="panel" aria-labelledby="titulo-formulario">
+        <h2 id="titulo-formulario">Nueva tarea</h2>
+
+        <form id="formulario-tarea" class="formulario">
+          <div class="campo">
+            <label for="titulo">Título</label>
+            <input type="text" id="titulo" name="titulo" required minlength="3" placeholder="Qué hay que hacer…">
+            <small class="error"></small>
+          </div>
+
+          <div class="campo">
+            <label for="asignatura">Asignatura</label>
+            <select id="asignatura" name="asignatura" required>
+              <option value="">Elige una…</option>
+              <option value="DWEC">DWEC</option>
+              <option value="DWES">DWES</option>
+              <option value="DIW">DIW</option>
+              <option value="BBDD">BBDD</option>
+            </select>
+            <small class="error"></small>
+          </div>
+
+          <div class="campo">
+            <label for="horas">Horas estimadas</label>
+            <input type="number" id="horas" name="horas" required min="1" max="20" step="any">
+            <small class="error"></small>
+          </div>
+
+          <div class="campo">
+            <label for="prioridad">Prioridad</label>
+            <select id="prioridad" name="prioridad">
+              <option value="baja">Baja</option>
+              <option value="media" selected>Media</option>
+              <option value="alta">Alta</option>
+            </select>
+            <small class="error"></small>
+          </div>
+
+          <button type="submit" class="boton-principal">Añadir tarea</button>
+          <p id="mensaje-formulario" class="mensaje" role="status"></p>
+        </form>
+      </section>
+
+      <section class="panel" aria-labelledby="titulo-resumen">
+        <h2 id="titulo-resumen">Resumen</h2>
+        <p class="subtitulo">Horas por asignatura</p>
+        <ul id="horas-asignatura" class="horas-asignatura"></ul>
+        <p id="progreso" class="progreso"></p>
+      </section>
+
+    </aside>
+
+    <!-- Zona principal: buscador y tablero (apartados 2, 3 y 4) -->
+    <section class="principal" aria-labelledby="titulo-tablero">
+      <h2 id="titulo-tablero" class="solo-lectores">Tablero</h2>
+
+      <div class="barra">
+        <input type="search" id="buscador" placeholder="Buscar por título o asignatura…" aria-label="Buscar tareas">
+        <button type="button" id="boton-archivar" class="boton-secundario">Archivar hechas</button>
+      </div>
+
+      <div id="tablero" class="tablero">
+        <section class="columna" aria-labelledby="cab-porhacer">
+          <h3 id="cab-porhacer">Por hacer <span id="num-porhacer" class="contador">0</span></h3>
+          <ul id="col-porhacer" class="tarjetas"></ul>
+        </section>
+
+        <section class="columna" aria-labelledby="cab-encurso">
+          <h3 id="cab-encurso">En curso <span id="num-encurso" class="contador">0</span></h3>
+          <ul id="col-encurso" class="tarjetas"></ul>
+        </section>
+
+        <section class="columna" aria-labelledby="cab-hecha">
+          <h3 id="cab-hecha">Hecha <span id="num-hecha" class="contador">0</span></h3>
+          <ul id="col-hecha" class="tarjetas"></ul>
+        </section>
+      </div>
+    </section>
+
+  </main>
+
+  <script type="module" src="js/principal.js"></script>
+</body>
+</html>

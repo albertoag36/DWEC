@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>setCustomValidity: dos correos iguales</title>
+  <style>
+body { font-family: Arial, sans-serif; margin: 24px; max-width: 520px; }
+label { display: block; margin-top: 10px; }
+input[type=text], input[type=password], input[type=email], input[type=url], input[type=number], textarea, select { padding: 6px; width: 100%; box-sizing: border-box; }
+button { margin-top: 12px; padding: 6px 14px; }
+.nota { color: #666; font-size: 14px; }
+.error { color: darkred; margin: 4px 0 12px; }
+.error:empty { display: none; } /* sin mensaje, no ocupa espacio */
+input { display: block; padding: 6px; width: 100%; box-sizing: border-box; }
+  </style>
+</head>
+<body>
+<h2>setCustomValidity: dos correos iguales</h2>
+<label for="correo">Correo electrónico:</label>
+<input type="email" id="correo" name="correo" required>
+<p id="error-correo" class="error"></p>
+<label for="correo2">Repite el correo:</label>
+<input type="email" id="correo2" name="correo2" required>
+<p id="error-correo2" class="error"></p>
+<script type="module">
+const correo = document.getElementById('correo');
+const correo2 = document.getElementById('correo2');
+const zonaError2 = document.getElementById('error-correo2');
+
+function comprobarCorreos() {
+  const mensaje = (correo.value === correo2.value) ? '' : 'Los correos deben coincidir.';
+  correo2.setCustomValidity(mensaje); // '' significa «campo válido»
+  zonaError2.textContent = correo2.validationMessage;
+}
+
+correo.addEventListener('input', comprobarCorreos);
+correo2.addEventListener('input', comprobarCorreos);
+</script>
+</body>
+</html>

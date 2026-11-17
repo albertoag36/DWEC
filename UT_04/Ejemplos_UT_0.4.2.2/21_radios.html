@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Botones de opción</title>
+  <style>
+body { font-family: Arial, sans-serif; margin: 24px; max-width: 520px; }
+label { display: block; margin-top: 10px; }
+input[type=text], input[type=password], input[type=email], input[type=url], input[type=number], textarea, select { padding: 6px; width: 100%; box-sizing: border-box; }
+button { margin-top: 12px; padding: 6px 14px; }
+.nota { color: #666; font-size: 14px; }
+label { margin: 4px 0; }
+  </style>
+</head>
+<body>
+<h2>Botones de opción</h2>
+<form id="pedido" name="pedido">
+  <label><input type="radio" name="pizza" value="P001"> Pizza Salami</label>
+  <label><input type="radio" name="pizza" value="P002"> Pizza Margarita</label>
+  <label><input type="radio" name="pizza" value="P003"> Pizza Atún</label>
+  <label><input type="radio" name="pizza" value="P004"> Pizza Mozzarella</label>
+  <label><input type="radio" name="pizza" value="P005"> Pizza Hawaiana</label>
+</form>
+<p>Selección: <span id="seleccion"></span></p>
+<p class="nota">Abre la consola del navegador (F12) para ver los resultados.</p>
+<script type="module">
+const formulario = document.getElementById('pedido');
+const mensaje = document.getElementById('seleccion');
+const radios = formulario.elements.pizza; // los 5 botones del grupo «pizza»
+
+for (const radio of radios) {
+  radio.addEventListener('change', (evento) => {
+    console.log(evento.target.value);              // p. ej., «P002»
+    mensaje.textContent = evento.target.value;
+  });
+}
+</script>
+</body>
+</html>

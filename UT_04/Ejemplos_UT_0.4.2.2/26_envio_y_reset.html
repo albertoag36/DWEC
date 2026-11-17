@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Enviar y restablecer con código</title>
+  <style>
+body { font-family: Arial, sans-serif; margin: 24px; max-width: 520px; }
+label { display: block; margin-top: 10px; }
+input[type=text], input[type=password], input[type=email], input[type=url], input[type=number], textarea, select { padding: 6px; width: 100%; box-sizing: border-box; }
+button { margin-top: 12px; padding: 6px 14px; }
+.nota { color: #666; font-size: 14px; }
+
+  </style>
+</head>
+<body>
+<h2>Enviar y restablecer con código</h2>
+<form id="acceso" name="acceso" method="post" action="#">
+  <div>
+    <label for="usuario">Usuario:</label>
+    <input type="text" id="usuario" name="usuario" placeholder="Usuario">
+  </div>
+  <div>
+    <label for="clave">Contraseña:</label>
+    <input type="password" id="clave" name="clave" placeholder="Contraseña">
+  </div>
+  <div>
+    <label>
+      <input type="checkbox" id="recordar" name="recordar" value="recordar">
+      Recordarme en este equipo
+    </label>
+  </div>
+  <button type="button" id="entrar">Entrar</button>
+  <button type="button" id="borrar">Borrar</button>
+  <button type="submit" id="enviar">Enviar</button>
+</form>
+<pre id="resumen"></pre>
+<script type="module">
+const formulario = document.getElementById('acceso');
+
+document.getElementById('entrar').addEventListener('click', () => {
+  formulario.requestSubmit(); // valida los campos y lanza el evento «submit»
+  // formulario.submit();     // envía directamente, SIN validar y SIN evento «submit»
+});
+
+document.getElementById('borrar').addEventListener('click', () => {
+  formulario.reset(); // restablece los valores iniciales del HTML
+});
+
+formulario.addEventListener('submit', (evento) => {
+  evento.preventDefault();                  // evitamos el envío tradicional
+  const datos = new FormData(formulario);   // recoge todos los campos con atributo name
+  document.getElementById('resumen').textContent = JSON.stringify(Object.fromEntries(datos), null, 2);
+});
+</script>
+</body>
+</html>

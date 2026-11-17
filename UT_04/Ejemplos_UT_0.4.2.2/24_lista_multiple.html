@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista de selección múltiple</title>
+  <style>
+body { font-family: Arial, sans-serif; margin: 24px; max-width: 520px; }
+label { display: block; margin-top: 10px; }
+input[type=text], input[type=password], input[type=email], input[type=url], input[type=number], textarea, select { padding: 6px; width: 100%; box-sizing: border-box; }
+button { margin-top: 12px; padding: 6px 14px; }
+.nota { color: #666; font-size: 14px; }
+select { width: auto; }
+  </style>
+</head>
+<body>
+<h2>Lista de selección múltiple</h2>
+<select id="pizza" name="pizza" size="4" multiple>
+  <option value="P001" selected>Pizza Salami</option>
+  <option value="P002">Pizza Margarita</option>
+  <option value="P003">Pizza Atún</option>
+  <option value="P004">Pizza Mozzarella</option>
+  <option value="P005">Pizza Hawaiana</option>
+</select>
+<div id="seleccion"></div>
+<script type="module">
+const lista = document.getElementById('pizza');
+const mensaje = document.getElementById('seleccion');
+
+lista.addEventListener('change', () => {
+  mensaje.replaceChildren(); // vacía el contenedor
+  for (const opcion of lista.selectedOptions) { // solo las opciones marcadas
+    const linea = document.createElement('div');
+    linea.textContent = `${opcion.text} (${opcion.value})`;
+    mensaje.append(linea);
+  }
+});
+</script>
+</body>
+</html>

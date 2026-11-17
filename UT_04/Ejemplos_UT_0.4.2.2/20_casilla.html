@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Casilla de verificación</title>
+  <style>
+body { font-family: Arial, sans-serif; margin: 24px; max-width: 520px; }
+label { display: block; margin-top: 10px; }
+input[type=text], input[type=password], input[type=email], input[type=url], input[type=number], textarea, select { padding: 6px; width: 100%; box-sizing: border-box; }
+button { margin-top: 12px; padding: 6px 14px; }
+.nota { color: #666; font-size: 14px; }
+
+  </style>
+</head>
+<body>
+<h2>Casilla de verificación</h2>
+<form id="acceso" name="acceso" method="post" action="acceso.html">
+  <div>
+    <label for="usuario">Usuario:</label>
+    <input type="text" id="usuario" name="usuario" placeholder="Usuario">
+  </div>
+  <div>
+    <label for="clave">Contraseña:</label>
+    <input type="password" id="clave" name="clave" placeholder="Contraseña">
+  </div>
+  <div>
+    <label>
+      <input type="checkbox" id="recordar" name="recordar" value="on">
+      Recordarme en este equipo
+    </label>
+  </div>
+  <button type="submit" id="entrar">Entrar</button>
+</form>
+<p class="nota">Abre la consola del navegador (F12) para ver los resultados.</p>
+<script type="module">
+const casilla = document.getElementById('recordar');
+
+casilla.addEventListener('change', (e) => {
+  console.log(casilla.value);   // «on» por defecto
+  console.log(casilla.checked); // true o false
+});
+</script>
+</body>
+</html>

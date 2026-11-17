@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Botones de opción: un solo escuchador</title>
+  <style>
+body { font-family: Arial, sans-serif; margin: 24px; max-width: 520px; }
+label { display: block; margin-top: 10px; }
+input[type=text], input[type=password], input[type=email], input[type=url], input[type=number], textarea, select { padding: 6px; width: 100%; box-sizing: border-box; }
+button { margin-top: 12px; padding: 6px 14px; }
+.nota { color: #666; font-size: 14px; }
+label { margin: 4px 0; }
+  </style>
+</head>
+<body>
+<h2>Botones de opción: un solo escuchador</h2>
+<form id="pedido" name="pedido">
+  <label><input type="radio" name="pizza" value="P001"> Pizza Salami</label>
+  <label><input type="radio" name="pizza" value="P002"> Pizza Margarita</label>
+  <label><input type="radio" name="pizza" value="P003"> Pizza Atún</label>
+  <label><input type="radio" name="pizza" value="P004"> Pizza Mozzarella</label>
+  <label><input type="radio" name="pizza" value="P005"> Pizza Hawaiana</label>
+</form>
+<p>Selección: <span id="seleccion"></span></p>
+<script type="module">
+const formulario = document.getElementById('pedido');
+const mensaje = document.getElementById('seleccion');
+
+// El evento change burbujea hasta el formulario: basta un único escuchador
+formulario.addEventListener('change', () => {
+  // La propiedad value del grupo devuelve el valor del botón marcado ('' si no hay ninguno)
+  mensaje.textContent = formulario.elements.pizza.value;
+});
+</script>
+</body>
+</html>

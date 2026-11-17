@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Registro de usuario</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 480px; margin: 24px auto; }
+    label { display: block; margin-top: 12px; }
+    input[type=text], input[type=email], input[type=password], input[type=date], select { width: 100%; padding: 6px; box-sizing: border-box; }
+    .error { color: darkred; margin: 4px 0 0; font-size: 14px; }
+    .error:empty { display: none; }
+    .con-error { border: 2px solid darkred; }
+    button { margin: 16px 8px 0 0; padding: 6px 14px; }
+  </style>
+</head>
+<body>
+  <h1>Registro de usuario</h1>
+  <form id="registro">
+    <label for="usuario">Usuario</label>
+    <input type="text" id="usuario" name="usuario" required minlength="3" maxlength="15"
+           pattern="[A-Za-z0-9_]+" title="Solo letras, números y guion bajo.">
+    <p class="error" id="error-usuario"></p>
+
+    <label for="correo">Correo electrónico</label>
+    <input type="email" id="correo" name="correo" required>
+    <p class="error" id="error-correo"></p>
+
+    <label for="correo2">Repite el correo</label>
+    <input type="email" id="correo2" name="correo2" required>
+    <p class="error" id="error-correo2"></p>
+
+    <label for="clave">Contraseña</label>
+    <input type="password" id="clave" name="clave" required minlength="8"
+           pattern="(?=.*[0-9])(?=.*[A-Za-z]).{8,}" title="Mínimo 8 caracteres, con letras y números.">
+    <p class="error" id="error-clave"></p>
+
+    <label for="clave2">Repite la contraseña</label>
+    <input type="password" id="clave2" name="clave2" required>
+    <p class="error" id="error-clave2"></p>
+
+    <label for="nacimiento">Fecha de nacimiento</label>
+    <input type="date" id="nacimiento" name="nacimiento" required>
+    <p class="error" id="error-nacimiento"></p>
+
+    <label for="pais">País</label>
+    <select id="pais" name="pais" required>
+      <option value="">Elige un país</option>
+    </select>
+    <p class="error" id="error-pais"></p>
+
+    <fieldset>
+      <legend>Tipo de cuenta</legend>
+      <label><input type="radio" name="cuenta" value="personal" required> Personal</label>
+      <label><input type="radio" name="cuenta" value="empresa"> Empresa</label>
+    </fieldset>
+    <p class="error" id="error-cuenta"></p>
+
+    <label><input type="checkbox" name="acepto" required> Acepto las condiciones de uso</label>
+    <p class="error" id="error-acepto"></p>
+
+    <button type="submit">Registrarse</button>
+    <button type="reset">Borrar</button>
+  </form>
+  <pre id="resultado"></pre>
+  <script type="module" src="js/registro.js"></script>
+</body>
+</html>

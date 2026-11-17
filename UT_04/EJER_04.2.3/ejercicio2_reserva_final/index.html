@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Reserva de viaje</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 520px; margin: 24px auto; }
+    label { display: block; margin-top: 12px; }
+    input[type=text], input[type=tel], input[type=number], input[type=date], select, textarea { width: 100%; padding: 6px; box-sizing: border-box; }
+    fieldset label { display: inline-block; margin-right: 12px; }
+    .error { color: darkred; margin: 4px 0 0; font-size: 14px; }
+    .error:empty { display: none; }
+    .con-error { border: 2px solid darkred; }
+    button { margin: 16px 8px 0 0; padding: 6px 14px; }
+  </style>
+</head>
+<body>
+  <h1>Reserva de viaje</h1>
+  <form id="reserva">
+    <label for="nombre">Nombre completo</label>
+    <input type="text" id="nombre" name="nombre" required minlength="3" maxlength="40">
+    <p class="error" id="error-nombre"></p>
+
+    <label for="telefono">Teléfono</label>
+    <input type="tel" id="telefono" name="telefono" required pattern="[0-9]{9}" title="Escribe 9 dígitos, sin espacios.">
+    <p class="error" id="error-telefono"></p>
+
+    <label for="personas">Número de personas (1 a 6)</label>
+    <input type="number" id="personas" name="personas" required min="1" max="6" value="1">
+    <p class="error" id="error-personas"></p>
+
+    <label for="entrada">Fecha de entrada</label>
+    <input type="date" id="entrada" name="entrada" required>
+    <p class="error" id="error-entrada"></p>
+
+    <label for="salida">Fecha de salida</label>
+    <input type="date" id="salida" name="salida" required>
+    <p class="error" id="error-salida"></p>
+
+    <fieldset>
+      <legend>Habitación</legend>
+      <label><input type="radio" name="habitacion" value="individual" required> Individual (40 €)</label>
+      <label><input type="radio" name="habitacion" value="doble"> Doble (60 €)</label>
+      <label><input type="radio" name="habitacion" value="familiar"> Familiar (90 €)</label>
+    </fieldset>
+    <p class="error" id="error-habitacion"></p>
+
+    <label for="actividades">Actividades (elige de 1 a 3)</label>
+    <select id="actividades" name="actividades" multiple size="5" required>
+      <option value="senderismo">Senderismo</option>
+      <option value="kayak">Kayak</option>
+      <option value="buceo">Buceo</option>
+      <option value="ciclismo">Ciclismo</option>
+      <option value="yoga">Yoga</option>
+    </select>
+    <p class="error" id="error-actividades"></p>
+
+    <fieldset>
+      <legend>Extras (por persona y noche)</legend>
+      <label><input type="checkbox" name="extras" value="desayuno" data-precio="8"> Desayuno (8 €)</label>
+      <label><input type="checkbox" name="extras" value="parking" data-precio="12"> Parking (12 €)</label>
+    </fieldset>
+
+    <label for="comentarios">Comentarios <span id="contador">0/120</span></label>
+    <textarea id="comentarios" name="comentarios" rows="3" maxlength="120"></textarea>
+    <p class="error" id="error-comentarios"></p>
+
+    <label><input type="checkbox" name="acepto" required> Acepto la política de cancelación</label>
+    <p class="error" id="error-acepto"></p>
+
+    <button type="submit">Reservar</button>
+    <button type="reset">Borrar</button>
+  </form>
+  <p id="total">Total estimado: 0.00 €</p>
+  <pre id="resultado"></pre>
+  <script type="module" src="js/reserva.js"></script>
+</body>
+</html>

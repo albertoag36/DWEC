@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Notas de clase</title>
+  <style>
+    th[data-orden] { cursor: pointer; }
+    .suspenso { color: darkred; }
+    .aprobado { color: darkgreen; }
+  </style>
+</head>
+<body>
+  <form id="formulario-notas">
+    <input type="text" name="alumno" placeholder="Alumno" required>
+    <input type="number" name="nota" placeholder="Nota (0-10)" min="0" max="10" step="0.1" required>
+    <span id="vista-previa"></span>
+    <button type="submit">Añadir</button>
+  </form>
+  <table id="tabla">
+    <thead>
+      <tr><th data-orden="alumno">Alumno</th><th data-orden="nota">Nota</th><th></th></tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  <p id="resumen"></p>
+  <script type="module" src="js/principal.js"></script>
+</body>
+</html>

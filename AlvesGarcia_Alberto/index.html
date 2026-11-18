@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CineClub Cantábrico</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <header class="cabecera">
+    <h1>CineClub Cantábrico</h1>
+    <p>Cartelera de la semana</p>
+  </header>
+
+  <main class="contenido">
+
+    <!-- Apartados 1 y 2: cartelera, filtros y orden -->
+    <section aria-labelledby="titulo-cartelera">
+      <h2 id="titulo-cartelera">Cartelera</h2>
+
+      <form id="formulario-filtros" class="filtros">
+        <label>Género
+          <select id="filtro-genero" name="genero">
+            <option value="">Todos</option>
+            <option value="Acción">Acción</option>
+            <option value="Aventura">Aventura</option>
+            <option value="Comedia">Comedia</option>
+            <option value="Drama">Drama</option>
+          </select>
+        </label>
+
+        <label class="casilla">
+          <input type="checkbox" id="filtro-disponibles" name="disponibles">
+          Solo disponibles
+        </label>
+
+        <label>Ordenar por
+          <select id="orden" name="orden">
+            <option value="titulo">Título</option>
+            <option value="duracion">Duración</option>
+            <option value="precio">Precio</option>
+          </select>
+        </label>
+      </form>
+
+      <p id="contador" class="contador" role="status"></p>
+      <div id="cartelera" class="cartelera"></div>
+    </section>
+
+    <!-- Apartados 3 y 4: entradas reservadas y formulario -->
+    <aside class="entradas" aria-labelledby="titulo-entradas">
+      <h2 id="titulo-entradas">Tus entradas</h2>
+
+      <ul id="lista-reservas" class="lista-reservas"></ul>
+      <p id="total-reservas" class="total"></p>
+      <p id="mensaje-reservas" class="mensaje" role="alert"></p>
+
+      <h2>Confirmar reserva</h2>
+      <form id="formulario-reserva" class="formulario">
+        <div class="campo">
+          <label for="nombre">Nombre y apellidos</label>
+          <input type="text" id="nombre" name="nombre" required minlength="3">
+          <p class="error" id="error-nombre"></p>
+        </div>
+
+        <div class="campo">
+          <label for="correo">Correo electrónico</label>
+          <input type="email" id="correo" name="correo" required>
+          <p class="error" id="error-correo"></p>
+        </div>
+
+        <div class="campo">
+          <label for="telefono">Teléfono</label>
+          <input type="tel" id="telefono" name="telefono" required pattern="[0-9]{9}" title="Escribe 9 dígitos, sin espacios">
+          <p class="error" id="error-telefono"></p>
+        </div>
+
+        <div class="campo">
+          <label for="fecha">Fecha de la sesión</label>
+          <input type="date" id="fecha" name="fecha" required>
+          <p class="error" id="error-fecha"></p>
+        </div>
+
+        <div class="campo">
+          <label class="casilla">
+            <input type="checkbox" id="condiciones" name="condiciones" required>
+            Acepto las condiciones
+          </label>
+          <p class="error" id="error-condiciones"></p>
+        </div>
+
+        <button type="submit" class="boton-principal">Confirmar reserva</button>
+      </form>
+
+      <pre id="resultado" class="resultado" role="status"></pre>
+    </aside>
+
+  </main>
+
+  <script type="module" src="js/principal.js"></script>
+</body>
+</html>

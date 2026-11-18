@@ -49,7 +49,8 @@ export const validarFormulario = (formulario) => {
     const campos = [...formulario.elements].filter((campo) =>
         ['INPUT', 'SELECT', 'TEXTAREA'].includes(campo.tagName)
     )
-    const resultados = campos.map((campo) => validarCampo(campo));
+
+    const resultados = campos.map((campo) => mostrarError(campo));
 
     if (resultados.includes(false)) {
         campos[resultados.indexOf(false)].focus();

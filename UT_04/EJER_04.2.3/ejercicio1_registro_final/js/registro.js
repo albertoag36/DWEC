@@ -23,29 +23,51 @@ console.log(hoy.getFullYear() - new Date('2008-03-15').getFullYear())
 
 const comprobarReglas = () => {
   const elementos = formulario.elements
-  if (elementos.correo2.value !== formulario.elements.correo.value) {
 
+  elementos.correo2.setCustomValidity('')
+  elementos.clave2.setCustomValidity('')
+  elementos.nacimiento.setCustomValidity('')
+
+  if (elementos.correo2.value !== formulario.elements.correo.value) {
+    elementos.correo2.setCustomValidity('El correo no coincide')
   }
 
   if (elementos.clave2.value !== formulario.elements.clave.value) {
-
+    elementos.clave2.setCustomValidity('Las claves no coinciden')
   }
 
-  const calcularEdad = () => {
-    const nacimiento = new Date(elementos.nacimiento)
-    const hoy = new Date()
 
-    let edad = hoy.getFullYear() - nacimiento.getUTCFullYear()
+  const nacimiento = new Date(elementos.nacimiento.value)
+  const hoy = new Date()
 
-    const mesActual = hoy.getMonth()
-    const mesNacimiento = nacimiento.getUTCMonth()
+  let edad = hoy.getFullYear() - nacimiento.getUTCFullYear()
 
-    const cumpleNoLlegado =
-      mesActual < mesNacimiento ||
-      (mesActual === mesNacimiento && hoy.getDate() < nacimiento.getUTCDate())
+  const mesActual = hoy.getMonth()
+  const mesNacimiento = nacimiento.getUTCMonth()
 
-    if (cumpleNoLlegado) edad--
+  const cumpleNoLlegado =
+    mesActual < mesNacimiento ||
+    (mesActual === mesNacimiento && hoy.getDate() < nacimiento.getUTCDate())
 
-    return edad
+  if (cumpleNoLlegado) edad--
+
+  if (edad < 18) {
+    elementos.nacimiento.setCustomValidity('Debes ser mayor de edad')
   }
+
 }
+
+formulario.addEventListener('focusout', (e) => {
+  comprobarReglas()
+  mostrarError(e.target)
+})
+
+formulario.addEventListener('input ', (e) => {
+  comprobarReglas()
+  mostrarError(e.target)
+})
+
+formulario.addEventListener('submit', (e) => {
+  e.preventDefault()
+  validarFormulario(formulario)
+})
